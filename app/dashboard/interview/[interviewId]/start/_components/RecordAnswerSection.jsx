@@ -3,7 +3,7 @@ import  Webcam  from 'react-webcam'
 import React, { useState } from 'react'
 import useSpeechToText from 'react-hook-speech-to-text';
 
-import { Button } from '@/AI_MockInterview/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { WebcamIcon, XIcon } from 'lucide-react';
 
 const RecordAnswerSection = () => {

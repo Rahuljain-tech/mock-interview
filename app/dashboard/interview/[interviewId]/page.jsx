@@ -33,8 +33,8 @@ const Interview = ({params}) => {
         <div className='flex flex-col my-5 gap-5 '>
                <div className='flex flex-col p-5 rounded-lg border gap-5'>
                <h2 className='text-lg'><strong>Job Role/Job Position: {interviewData?.jobPosition}</strong></h2>
-                <h2 className='text-lg'><strong>Job Role/Job Position: {interviewData?.jobDesc}</strong></h2>
-                <h2 className='text-lg'><strong>Job Role/Job Position: {interviewData?.jobExperience}</strong></h2>
+                <h2 className='text-lg'><strong>Job Description/Tech Stack: {interviewData?.jobDesc}</strong></h2>
+                <h2 className='text-lg'><strong>Years Of Experience: {interviewData?.jobExperience}</strong></h2>
 
                </div>
                 {/* {interviewData.jobPosition} */}

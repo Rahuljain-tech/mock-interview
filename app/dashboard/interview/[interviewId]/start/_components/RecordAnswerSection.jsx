@@ -1,12 +1,13 @@
 'use client';
 import  Webcam  from 'react-webcam'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useSpeechToText from 'react-hook-speech-to-text';
 
 import { Button } from '@/components/ui/button'
 import { WebcamIcon, XIcon } from 'lucide-react';
 
 const RecordAnswerSection = () => {
+  const [userAnswer, setUserAnswer] = useState('');
      const [webCamEnabled, setWebCamEnabled] = useState(false);
     const {
         error,
@@ -22,6 +23,27 @@ const RecordAnswerSection = () => {
       console.log(isRecording)
       const click=()=>{
         console.log(isRecording)
+      }
+
+      useEffect(()=>{
+        results.map((result)=>(
+          setUserAnswer(prevAns => prevAns + result.transcript)
+        ))
+      },[results])
+
+      const SaveUserAnswer=()=>{
+        if (error) {
+          console.error("Speech to Text Error:", error);
+          alert("An error occurred. Please check the console for details.");
+          return;
+        }
+    
+        if (isRecording) {
+          stopSpeechToText();
+        } else {
+          startSpeechToText();
+        }
+        console.log("Recording toggled. Current state:", isRecording);
       }
   return (
     <div className='space-2 gap-2'>
@@ -55,11 +77,19 @@ const RecordAnswerSection = () => {
       <div className='m-2 space-x-2'>
       <Button variant='ghost' onClick={() => setWebCamEnabled(true)}>Enable Web Camera</Button>
             
-            <Button className="hover:bg-gray-500" onClick={()=>{isRecording ? stopSpeechToText() : startSpeechToText();
+            {/* <Button className="hover:bg-gray-500" onClick={()=>{isRecording ? stopSpeechToText() : startSpeechToText();
               click()
             }}>
               {isRecording ? 'Stop Recording' : 'Start Recording'}
-            </Button>
+            </Button> */}
+
+<Button
+  className="hover:bg-gray-500"
+  onClick={SaveUserAnswer}
+>
+  {isRecording ? 'Stop Recording' : 'Start Recording'}
+</Button>
+
       </div>
       <ul>
         {results.map((result) => (

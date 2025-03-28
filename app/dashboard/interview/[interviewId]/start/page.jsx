@@ -39,7 +39,8 @@ console.log('result is:',result)
             {/* Questions */}
 
             <QuestionSection mockInterviewQuestion={mockInterviewQuestion}
-            activeQuestionIndex={activeQuestionIndex}
+            activeQuestionIndex={activeQuestionIndex} 
+            setActiveQuestionIndex={setActiveQuestionIndex}
             />
 
             {/* Video Audio Recording */}
